@@ -9,11 +9,12 @@ namespace ATMSystem.Data.Repository
 {
     public class UserRepository : IRepository<User>
     {
-        private ATMSystemContext _db;
+        private readonly ATMSystemContext _db;
         public UserRepository(ATMSystemContext db)
         {
             _db = db;
         }
-        public IEnumerable<User> All => _db.Users.ToList();
+        public IEnumerable<User> GetAll() => _db.Users.ToList();
+        public User GetById(int id) => _db.Users.Where(u => u.Id == id).FirstOrDefault();
     }
 }

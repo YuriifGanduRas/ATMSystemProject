@@ -7,14 +7,14 @@ using System.Text;
 
 namespace ATMSystem.Data.Repository
 {
-    class AccountRepository : IRepository<Account>
+    class BankRepository : IRepository<Bank>
     {
         private readonly ATMSystemContext _db;
-        public AccountRepository(ATMSystemContext db)
+        public BankRepository(ATMSystemContext db)
         {
             _db = db;
         }
-        public IEnumerable<Account> GetAll() => _db.Accounts.ToList();
-        public Account GetById(int id) => _db.Accounts.Where(a => a.Id == id).FirstOrDefault();
+        public IEnumerable<Bank> GetAll() => _db.Banks.ToList();
+        public Bank GetById(int id) => _db.Banks.Where(b => b.Id == id).FirstOrDefault();
     }
 }
