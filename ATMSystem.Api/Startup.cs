@@ -1,3 +1,4 @@
+using ATMSystem.Business.Services;
 using ATMSystem.Data.Context;
 using ATMSystem.Data.Entities;
 using ATMSystem.Data.Repository;
@@ -20,8 +21,10 @@ namespace ATMSystem.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddAutoMapper(typeof(Startup));
             services.AddSingleton<ATMSystemContext>();
-            services.AddSingleton<IRepository<User>, UserRepository>();
+            services.AddSingleton<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUserService, UserService>();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -32,13 +35,7 @@ namespace ATMSystem.Api
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-            });
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
     }
 }

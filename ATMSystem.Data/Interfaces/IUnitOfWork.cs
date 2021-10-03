@@ -1,25 +1,14 @@
-﻿using ATMSystem.Data.Context;
-using ATMSystem.Data.Entities;
+﻿using ATMSystem.Data.Entities;
 using ATMSystem.Data.Repository;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace ATMSystem.Data.Interfaces
+namespace ATMSystem.Data.Context
 {
-    class IUnitOfWork
+    public interface IUnitOfWork
     {
-        private readonly ATMSystemContext _dbContext;
-        private readonly IRepository<User> _userRepository;
-        private readonly IRepository<Account> _accountRepository;
-        private readonly IRepository<Card> _cardRepository;
-        private readonly IRepository<Bank> _bankRepository;
-        public IUnitOfWork() { }
-
-        public IRepository<User> Users { get; }
-        public IRepository<Account> Accounts { get; }
-        public IRepository<Card> Cards { get; }
-        public IRepository<Bank> Banks { get; }
-
+        IRepository<Account> Accounts { get; }
+        IRepository<Bank> Banks { get; }
+        IRepository<Card> Cards { get; }
+        IRepository<User> Users { get; }
+        public void Save() { }
     }
 }
