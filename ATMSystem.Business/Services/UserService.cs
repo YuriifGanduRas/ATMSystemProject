@@ -19,8 +19,8 @@ namespace ATMSystem.Business.Services
         public IEnumerable<UserModel> GetAll()
         {
             var unmappedModels = _db.Users.GetAll();
-            var mappedModels = _mapper.Map<UserModel>(unmappedModels);
-            return (IEnumerable<UserModel>)mappedModels;
+            var mappedModels = _mapper.Map<IEnumerable<UserModel>>(unmappedModels);
+            return mappedModels;
         }
         public UserModel GetById(int id)
         {
