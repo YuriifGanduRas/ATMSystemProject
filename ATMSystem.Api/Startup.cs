@@ -21,7 +21,7 @@ namespace ATMSystem.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddAutoMapper(typeof(Startup));
+            //services.AddAutoMapper(typeof(Startup));
             services.AddSingleton<ATMSystemContext>();
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserService, UserService>();
