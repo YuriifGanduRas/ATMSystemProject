@@ -9,6 +9,6 @@ namespace ATMSystem.Business.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int MobilePhone { get; set; }
+        public long MobilePhone { get; set; }
     }
 }

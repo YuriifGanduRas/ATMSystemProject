@@ -16,7 +16,7 @@ namespace ATMSystem.Data.Entities
         public string LastName { get; set; }
         [Required]
         [Phone]
-        public int MobilePhone { get; set; }
+        public long MobilePhone { get; set; }
         public List<Card> Cards { get; set; }
     }
 }

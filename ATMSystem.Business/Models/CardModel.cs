@@ -7,7 +7,7 @@ namespace ATMSystem.Business.Models
     public class CardModel
     {
         public int Id { get; set; }
-        public int Number { get; set; }
+        public long Number { get; set; }
         public string OwnerFirstName { get; set; }
         public string OwnerLastName { get; set; }
         public int CvcCode { get; set; }

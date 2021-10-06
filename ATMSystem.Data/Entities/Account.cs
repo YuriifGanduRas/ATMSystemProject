@@ -13,7 +13,7 @@ namespace ATMSystem.Data.Entities
         public int Id { get; set; }
         [Required]
         [CreditCard]
-        public int Number { get; set; }
+        public Int64 Number { get; set; }
         [Required]
         public decimal Balance { get; set; }
         [Required]
