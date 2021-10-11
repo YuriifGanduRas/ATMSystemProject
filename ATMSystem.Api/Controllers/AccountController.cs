@@ -9,19 +9,19 @@ namespace ATMSystem.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UserController : ControllerBase
+    public class AccountController : ControllerBase
     {
-        private readonly IUserService _userService;
-        public UserController(IUserService userService)
+        private readonly IAccountService _accountService;
+        public AccountController(IAccountService accountService)
         {
-            _userService = userService;
+            _accountService = accountService;
         }
         [HttpGet]
-        public IActionResult GetAllUsers()
+        public IActionResult GetAllAccounts()
         {
             try
             {
-                return Ok(_userService.GetAll());
+                return Ok(_accountService.GetAll());
             }
             catch (Exception ex)
             {
@@ -29,11 +29,11 @@ namespace ATMSystem.Api.Controllers
             }
         }
         [HttpGet("{id}")]
-        public IActionResult GetUserById(int id)
+        public IActionResult GetAccountById(int id)
         {
             try
             {
-                return Ok(_userService.GetById(id));
+                return Ok(_accountService.GetById(id));
             }
             catch (Exception ex)
             {

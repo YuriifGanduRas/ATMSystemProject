@@ -21,10 +21,13 @@ namespace ATMSystem.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            //services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(typeof(Startup));
             services.AddSingleton<ATMSystemContext>();
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ICardService, CardService>();
+            services.AddScoped<IBankService, BankService>();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

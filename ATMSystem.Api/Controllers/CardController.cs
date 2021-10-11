@@ -9,19 +9,19 @@ namespace ATMSystem.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UserController : ControllerBase
+    public class CardController : ControllerBase
     {
-        private readonly IUserService _userService;
-        public UserController(IUserService userService)
+        private readonly ICardService _cardService;
+        public CardController(ICardService cardService)
         {
-            _userService = userService;
+            _cardService = cardService;
         }
         [HttpGet]
-        public IActionResult GetAllUsers()
+        public IActionResult GetAllCardsd()
         {
             try
             {
-                return Ok(_userService.GetAll());
+                return Ok(_cardService.GetAll());
             }
             catch (Exception ex)
             {
@@ -29,11 +29,11 @@ namespace ATMSystem.Api.Controllers
             }
         }
         [HttpGet("{id}")]
-        public IActionResult GetUserById(int id)
+        public IActionResult GetCardById(int id)
         {
             try
             {
-                return Ok(_userService.GetById(id));
+                return Ok(_cardService.GetById(id));
             }
             catch (Exception ex)
             {
