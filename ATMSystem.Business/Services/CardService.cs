@@ -12,14 +12,16 @@ namespace ATMSystem.Business.Services
     {
         private readonly IUnitOfWork _db;
         private readonly IMapper _mapper;
-        public CardService(IUnitOfWork db)//, IMapper mapper)
+        public CardService(IUnitOfWork db, IMapper mapper)
         {
             _db = db;
-            var config = new MapperConfiguration(opt => opt.CreateMap<Card, CardModel>().ForMember(dest => dest.OwnerFirstName, opt => opt.MapFrom(src => src.User.FirstName))
-                .ForMember(dest => dest.OwnerLastName, opt => opt.MapFrom(src => src.User.LastName))
-                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.CardType.Name))
-                .ForMember(dest => dest.Bank, opt => opt.MapFrom(src => src.Bank.Name)));
-            _mapper = new Mapper(config);
+            //var config = new MapperConfiguration(opt => opt.CreateMap<Card, CardModel>()
+            //    .ForMember(dest => dest.OwnerFirstName, opt => opt.MapFrom(src => src.User.FirstName))
+            //    .ForMember(dest => dest.OwnerLastName, opt => opt.MapFrom(src => src.User.LastName))
+            //    .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.CardType.Name))
+            //    .ForMember(dest => dest.Bank, opt => opt.MapFrom(src => src.Bank.Name)));
+            //_mapper = new Mapper(config);
+            _mapper = mapper;
         }
         public IEnumerable<CardModel> GetAll()
         {

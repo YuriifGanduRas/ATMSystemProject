@@ -5,7 +5,7 @@ namespace ATMSystem.Data.Context
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private ATMSystemContext _dbContext;
+        private readonly ATMSystemContext _dbContext;
         private IRepository<User> _userRepository;
         private IRepository<Account> _accountRepository;
         private IRepository<Card> _cardRepository;

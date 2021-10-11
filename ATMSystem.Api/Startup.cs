@@ -1,3 +1,4 @@
+using ATMSystem.Business.Profiles;
 using ATMSystem.Business.Services;
 using ATMSystem.Data.Context;
 using ATMSystem.Data.Entities;
@@ -21,7 +22,7 @@ namespace ATMSystem.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(typeof(AccountProfile));
             services.AddSingleton<ATMSystemContext>();
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserService, UserService>();

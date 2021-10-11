@@ -21,7 +21,8 @@ namespace ATMSystem.Api.Controllers
         {
             try
             {
-                return Ok(_accountService.GetAll());
+                var ersult = _accountService.GetAll();
+                return Ok(ersult);
             }
             catch (Exception ex)
             {
