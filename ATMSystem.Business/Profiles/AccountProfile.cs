@@ -7,11 +7,12 @@ using System.Text;
 
 namespace ATMSystem.Business.Profiles
 {
-    class AccountProfile : Profile
+    public class AccountProfile : Profile
     {
         public AccountProfile()
         {
-            CreateMap<Account, AccountModel>().ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.AccountStatus.Name));
+            CreateMap<Account, AccountModel>()
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.AccountStatus.Name));
         }
     }
 }

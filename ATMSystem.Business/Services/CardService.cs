@@ -1,5 +1,6 @@
 ﻿using ATMSystem.Business.Models;
 using ATMSystem.Data.Context;
+using ATMSystem.Data.Entities;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -19,8 +20,8 @@ namespace ATMSystem.Business.Services
         public IEnumerable<CardModel> GetAll()
         {
             var unmappedModels = _db.Cards.GetAll();
-            var mappedModels = _mapper.Map<CardModel>(unmappedModels);
-            return (IEnumerable<CardModel>)mappedModels;
+            var mappedModels = _mapper.Map<IEnumerable<CardModel>>(unmappedModels);
+            return mappedModels;
         }
         public CardModel GetById(int id)
         {

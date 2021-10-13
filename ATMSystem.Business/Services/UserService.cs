@@ -1,5 +1,6 @@
 ﻿using ATMSystem.Business.Models;
 using ATMSystem.Data.Context;
+using ATMSystem.Data.Entities;
 using AutoMapper;
 using System;
 using System.Collections.Generic;

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ATMSystem.Business.Profiles
 {
-    class BankProfile : Profile
+   public class BankProfile : Profile
     {
         public BankProfile()
         {
