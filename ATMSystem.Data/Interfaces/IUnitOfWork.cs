@@ -5,10 +5,10 @@ namespace ATMSystem.Data.Context
 {
     public interface IUnitOfWork
     {
-        IRepository<Account> Accounts { get; }
-        IRepository<Bank> Banks { get; }
-        IRepository<Card> Cards { get; }
-        IRepository<User> Users { get; }
+        public IRepository<Account> AccountRepository { get; }
+        public IRepository<Bank> BankRepository { get; }
+        public IRepository<Card> CardRepository { get; }
+        public IRepository<User> UserRepository { get; }
         public void Save() { }
     }
 }

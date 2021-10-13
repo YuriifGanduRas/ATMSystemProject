@@ -19,13 +19,13 @@ namespace ATMSystem.Business.Services
         }
         public IEnumerable<AccountModel> GetAll()
         {
-            var unmappedModels = _db.Accounts.GetAll();
+            var unmappedModels = _db.AccountRepository.GetAll();
             var mappedModels = _mapper.Map<IEnumerable<AccountModel>>(unmappedModels);
             return mappedModels;
         }
         public AccountModel GetById(int id)
         {
-            var unmappedModel = _db.Accounts.GetById(id);
+            var unmappedModel = _db.AccountRepository.GetById(id);
             var mappedModel = _mapper.Map<AccountModel>(unmappedModel);
             return mappedModel;
         }

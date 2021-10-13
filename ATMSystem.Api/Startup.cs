@@ -14,13 +14,13 @@ namespace ATMSystem.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddAutoMapper(typeof(CardProfile));
-            services.AddSingleton<ATMSystemContext>();
-            services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<ICardService, CardService>();
             services.AddScoped<IBankService, BankService>();
+            services.AddSingleton<ATMSystemContext>();
+            services.AddSingleton<IUnitOfWork, UnitOfWork>();
+            services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My ATMSystem API", Version = "v1" });

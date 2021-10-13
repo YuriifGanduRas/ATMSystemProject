@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using ATMSystem.Data.Context;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace ATMSystem.Data.Repository
 {
