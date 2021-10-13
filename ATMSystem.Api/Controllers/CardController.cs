@@ -13,31 +13,44 @@ namespace ATMSystem.Api.Controllers
         {
             _cardService = cardService;
         }
-        [HttpGet]
-        public IActionResult GetAllCards()
+        [HttpGet("{cardNumber}/{password}")]
+        public IActionResult GetCardInfo(long cardNumber, int password)
         {
-            try
+            try 
             {
-                var result = _cardService.GetAll();
+                var result = _cardService.GetCardInfo(cardNumber, password);
                 return Ok(result);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
         }
-        [HttpGet("{id}")]
-        public IActionResult GetCardById(int id)
-        {
-            try
-            {
-                var result = _cardService.GetById(id);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-        }
+        //[HttpPost]
+        //public IActionResult GetMoneyFromCard([FromForm] long cardNumber, int password, decimal sum)
+        //{
+        //    try
+        //    {
+        //        _cardService.GetMoneyFromCard(cardNumber, password, sum);
+        //        return Ok("Operation was succesfull");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, ex.Message);
+        //    }
+        //}
+        //[HttpPost]
+        //public IActionResult GetMoneyOnCard([FromForm] long cardNumber, int password, decimal sum)
+        //{
+        //    try
+        //    {
+        //        _cardService.GetMoneyOnCard(cardNumber, password, sum);
+        //        return Ok("Operation was succesfull");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, ex.Message);
+        //    }
+        //}
     }
 }

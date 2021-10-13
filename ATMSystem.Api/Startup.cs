@@ -17,7 +17,6 @@ namespace ATMSystem.Api
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<ICardService, CardService>();
-            services.AddScoped<IBankService, BankService>();
             services.AddSingleton<ATMSystemContext>();
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddAutoMapper(typeof(Startup));

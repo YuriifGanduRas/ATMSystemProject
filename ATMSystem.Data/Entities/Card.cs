@@ -12,7 +12,7 @@ namespace ATMSystem.Data.Entities
         public int Id { get; set; }
         [Required]
         [CreditCard]
-        public Int64 Number { get; set; }
+        public long Number { get; set; }
         [Required]
         public int Password { get; set; }
         [Required]

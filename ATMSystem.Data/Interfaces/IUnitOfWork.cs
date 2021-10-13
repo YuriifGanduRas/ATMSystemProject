@@ -6,7 +6,6 @@ namespace ATMSystem.Data.Context
     public interface IUnitOfWork
     {
         public IRepository<Account> AccountRepository { get; }
-        public IRepository<Bank> BankRepository { get; }
         public IRepository<Card> CardRepository { get; }
         public IRepository<User> UserRepository { get; }
         public void Save() { }

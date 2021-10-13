@@ -17,17 +17,49 @@ namespace ATMSystem.Business.Services
             _db = db;
             _mapper = mapper;
         }
-        public IEnumerable<CardModel> GetAll()
+        public CardModel GetCardInfo(long cardNumber, int password)
         {
-            var unmappedModels = _db.CardRepository.GetAll();
-            var mappedModels = _mapper.Map<IEnumerable<CardModel>>(unmappedModels);
-            return mappedModels;
+            Card cardStatus = _db.CardRepository.Find(rcard => rcard.Number == cardNumber && rcard.Password == password);
+            if (cardStatus == null)
+            {
+                return null; //Implement custom exception!!!
+            }
+            CardModel mappedCardStatus = _mapper.Map<Card, CardModel>(cardStatus);
+            return mappedCardStatus;
         }
-        public CardModel GetById(int id)
+        public void GetMoneyFromCard(long cardNumber, int password, decimal sum)
         {
-            var unmappedModel = _db.CardRepository.GetById(id);
-            var mappedModel = _mapper.Map<CardModel>(unmappedModel);
-            return mappedModel;
+            Card userCard = _db.CardRepository.Find(rcard => rcard.Number == cardNumber && rcard.Password == password);
+            if (userCard == null)
+            {
+                throw new Exception(); //Implement custom exception!!!
+            }
+            var cardStatus = userCard.Account.AccountStatus.Name;
+            if (cardStatus == "Frozen" || cardStatus == "Closed")
+            {
+                throw new Exception(); //Implement custom exception!!!
+            }
+            var cardBalance = userCard.Account.Balance;
+            if (cardBalance < sum)
+            {
+                throw new Exception(); //Implement custom exception!!!
+            }
+            cardBalance -= sum;
+        }
+        public void GetMoneyOnCard(long cardNumber, int password, decimal sum)
+        {
+            Card userCard = _db.CardRepository.Find(rcard => rcard.Number == cardNumber && rcard.Password == password);
+            if (userCard == null)
+            {
+                throw new Exception(); //Implement custom exception!!!
+            }
+            var cardStatus = userCard.Account.AccountStatus.Name;
+            if (cardStatus == "Frozen" || cardStatus == "Closed")
+            {
+                throw new Exception(); //Implement custom exception!!!
+            }
+            var cardBalance = userCard.Account.Balance;
+            cardBalance += sum;
         }
     }
 }
