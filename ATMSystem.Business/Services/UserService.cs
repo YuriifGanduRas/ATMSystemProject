@@ -12,11 +12,10 @@ namespace ATMSystem.Business.Services
     {
         private readonly IUnitOfWork _db;
         private readonly IMapper _mapper;
-        public UserService(IUnitOfWork db)//, IMapper mapper)
+        public UserService(IUnitOfWork db, IMapper mapper)
         {
             _db = db;
-            var config = new MapperConfiguration(opt => opt.CreateMap<User, UserModel>());
-            _mapper = new Mapper(config);
+            _mapper = mapper;
         }
         public IEnumerable<UserModel> GetAll()
         {

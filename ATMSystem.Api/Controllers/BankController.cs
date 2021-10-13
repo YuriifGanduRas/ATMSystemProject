@@ -1,9 +1,6 @@
 ﻿using ATMSystem.Business.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ATMSystem.Api.Controllers
 {
@@ -21,7 +18,8 @@ namespace ATMSystem.Api.Controllers
         {
             try
             {
-                return Ok(_bankService.GetAll());
+                var result = _bankService.GetAll();
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -33,7 +31,8 @@ namespace ATMSystem.Api.Controllers
         {
             try
             {
-                return Ok(_bankService.GetById(id));
+                var result = _bankService.GetById(id);
+                return Ok(result);
             }
             catch (Exception ex)
             {

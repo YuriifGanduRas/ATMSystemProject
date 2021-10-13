@@ -12,17 +12,16 @@ namespace ATMSystem.Business.Services
     {
         private readonly IUnitOfWork _db;
         private readonly IMapper _mapper;
-        public BankService(IUnitOfWork db)//, IMapper mapper)
+        public BankService(IUnitOfWork db, IMapper mapper)
         {
             _db = db;
-            var config = new MapperConfiguration(opt => opt.CreateMap<Bank, BankModel>());
-            _mapper = new Mapper(config);
+            _mapper = mapper;
         }
         public IEnumerable<BankModel> GetAll()
         {
             var unmappedModels = _db.Banks.GetAll();
             var mappedModels = _mapper.Map<IEnumerable<BankModel>>(unmappedModels);
-            return (IEnumerable<BankModel>)mappedModels;
+            return mappedModels;
         }
         public BankModel GetById(int id)
         {

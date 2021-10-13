@@ -1,9 +1,6 @@
 ﻿using ATMSystem.Business.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ATMSystem.Api.Controllers
 {
@@ -17,11 +14,12 @@ namespace ATMSystem.Api.Controllers
             _cardService = cardService;
         }
         [HttpGet]
-        public IActionResult GetAllCardsd()
+        public IActionResult GetAllCards()
         {
             try
             {
-                return Ok(_cardService.GetAll());
+                var result = _cardService.GetAll();
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -33,7 +31,8 @@ namespace ATMSystem.Api.Controllers
         {
             try
             {
-                return Ok(_cardService.GetById(id));
+                var result = _cardService.GetById(id);
+                return Ok(result);
             }
             catch (Exception ex)
             {
